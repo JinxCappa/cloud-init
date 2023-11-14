@@ -110,10 +110,7 @@
         "^.+$": {
           "label": "<group_name>",
           "description": "Optional string of single username or a list of usernames to add to the group",
-          "type": [
-            "string",
-            "array"
-          ],
+          "type": ["string", "array"],
           "items": {
             "type": "string"
           },
@@ -124,14 +121,10 @@
     "users_groups.user": {
       "oneOf": [
         {
-          "required": [
-            "name"
-          ]
+          "required": ["name"]
         },
         {
-          "required": [
-            "snapuser"
-          ]
+          "required": ["snapuser"]
         }
       ],
       "additionalProperties": false,
@@ -167,9 +160,7 @@
             {
               "type": "array",
               "items": {
-                "type": [
-                  "string"
-                ]
+                "type": ["string"]
               },
               "minItems": 1
             },
@@ -181,15 +172,11 @@
                   "description": "When providing an object for users.groups the ``<group_name>`` keys are the groups to add this user to",
                   "deprecated": true,
                   "deprecated_version": "23.1",
-                  "type": [
-                    "null"
-                  ],
+                  "type": ["null"],
                   "minItems": 1
                 }
               },
-              "hidden": [
-                "patternProperties"
-              ]
+              "hidden": ["patternProperties"]
             }
           ]
         },
@@ -293,10 +280,7 @@
         "sudo": {
           "oneOf": [
             {
-              "type": [
-                "string",
-                "null"
-              ],
+              "type": ["string", "null"],
               "description": "Sudo rule to use or false. Absence of a sudo value or ``null`` will result in no sudo rules added for this user."
             },
             {
@@ -327,9 +311,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": [
-          "arches"
-        ],
+        "required": ["arches"],
         "additionalProperties": false,
         "properties": {
           "arches": {
@@ -410,11 +392,7 @@
                 }
               },
               {
-                "enum": [
-                  "always",
-                  "once",
-                  "once-per-instance"
-                ]
+                "enum": ["always", "once", "once-per-instance"]
               }
             ]
           }
@@ -446,9 +424,7 @@
               "type": "integer"
             }
           },
-          "required": [
-            "version"
-          ]
+          "required": ["version"]
         }
       },
       "additionalProperties": true
@@ -478,10 +454,7 @@
             "install_method": {
               "type": "string",
               "default": "distro",
-              "enum": [
-                "distro",
-                "pip"
-              ],
+              "enum": ["distro", "pip"],
               "description": "The type of installation for ansible. It can be one of the following values:\n\n - ``distro``\n - ``pip``"
             },
             "run_user": {
@@ -499,10 +472,7 @@
                 "repositories": {
                   "type": "array",
                   "items": {
-                    "required": [
-                      "path",
-                      "source"
-                    ],
+                    "required": ["path", "source"],
                     "type": "object",
                     "additionalProperties": false,
                     "properties": {
@@ -611,9 +581,7 @@
               }
             },
             "galaxy": {
-              "required": [
-                "actions"
-              ],
+              "required": ["actions"],
               "type": "object",
               "additionalProperties": false,
               "properties": {
@@ -634,10 +602,7 @@
               "default": "ansible"
             },
             "pull": {
-              "required": [
-                "url",
-                "playbook_name"
-              ],
+              "required": ["url", "playbook_name"],
               "type": "object",
               "additionalProperties": false,
               "properties": {
@@ -725,10 +690,7 @@
               "description": "By default, cloud-init will generate a new repositories file ``/etc/apk/repositories`` based on any valid configuration settings specified within a apk_repos section of cloud config. To disable this behavior and preserve the repositories file from the pristine image, set ``preserve_repositories`` to ``true``.\n\n The ``preserve_repositories`` option overrides all other config keys that would alter ``/etc/apk/repositories``."
             },
             "alpine_repo": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "additionalProperties": false,
               "properties": {
                 "base_url": {
@@ -751,9 +713,7 @@
                   "description": "The Alpine version to use (e.g. ``v3.12`` or ``edge``)"
                 }
               },
-              "required": [
-                "version"
-              ],
+              "required": ["version"],
               "minProperties": 1
             },
             "local_repo_base_url": {
@@ -885,18 +845,13 @@
               "type": "string",
               "oneOf": [
                 {
-                  "enum": [
-                    "os"
-                  ]
+                  "enum": ["os"]
                 },
                 {
                   "deprecated": true,
                   "deprecated_version": "22.4",
                   "deprecated_description": "Use ``os`` instead.",
-                  "enum": [
-                    "none",
-                    "unchanged"
-                  ]
+                  "enum": ["none", "unchanged"]
                 }
               ]
             }
@@ -1097,11 +1052,7 @@
             "install_type": {
               "type": "string",
               "default": "packages",
-              "enum": [
-                "packages",
-                "gems",
-                "omnibus"
-              ],
+              "enum": ["packages", "gems", "omnibus"],
               "description": "The type of installation for chef. It can be one of the following values:\n\n - ``packages``\n - ``gems``\n - ``omnibus``"
             },
             "run_list": {
@@ -1155,10 +1106,7 @@
                 "table_type": {
                   "type": "string",
                   "default": "mbr",
-                  "enum": [
-                    "mbr",
-                    "gpt"
-                  ],
+                  "enum": ["mbr", "gpt"],
                   "description": "Specifies the partition table type, either ``mbr`` or ``gpt``. Default: ``mbr``."
                 },
                 "layout": {
@@ -1166,9 +1114,7 @@
                   "oneOf": [
                     {
                       "type": "string",
-                      "enum": [
-                        "remove"
-                      ]
+                      "enum": ["remove"]
                     },
                     {
                       "type": "boolean"
@@ -1229,18 +1175,11 @@
                 "description": "Specified either as a path or as an alias in the format ``<alias name>.<y>`` where ``<y>`` denotes the partition number on the device. If specifying device using the ``<alias name>.<partition number>`` format, the value of ``partition`` will be overwritten."
               },
               "partition": {
-                "type": [
-                  "string",
-                  "integer"
-                ],
+                "type": ["string", "integer"],
                 "oneOf": [
                   {
                     "type": "string",
-                    "enum": [
-                      "auto",
-                      "any",
-                      "none"
-                    ]
+                    "enum": ["auto", "any", "none"]
                   }
                 ],
                 "description": "The partition can be specified by setting ``partition`` to the desired partition number. The ``partition`` option may also be set to ``auto``, in which this module will search for the existence of a filesystem matching the ``label``, ``filesystem`` and ``device`` of the ``fs_setup`` entry and will skip creating the filesystem if one is found. The ``partition`` option may also be set to ``any``, in which case any filesystem that matches ``filesystem`` and ``device`` will cause this module to skip filesystem creation for the ``fs_setup`` entry, regardless of ``label`` matching or not. To write a filesystem directly to a device, use ``partition: none``. ``partition: none`` will **always** write the filesystem, even when the ``label`` and ``filesystem`` are matched, and ``overwrite`` is ``false``."
@@ -1254,20 +1193,14 @@
                 "description": "Ignored unless ``partition`` is ``auto`` or ``any``. Default ``false``."
               },
               "extra_opts": {
-                "type": [
-                  "array",
-                  "string"
-                ],
+                "type": ["array", "string"],
                 "items": {
                   "type": "string"
                 },
                 "description": "Optional options to pass to the filesystem creation command. Ignored if you using ``cmd`` directly."
               },
               "cmd": {
-                "type": [
-                  "array",
-                  "string"
-                ],
+                "type": ["array", "string"],
                 "items": {
                   "type": "string"
                 },
@@ -1283,9 +1216,7 @@
       "properties": {
         "fan": {
           "type": "object",
-          "required": [
-            "config"
-          ],
+          "required": ["config"],
           "additionalProperties": false,
           "properties": {
             "config": {
@@ -1322,17 +1253,10 @@
               "description": "The utility to use for resizing. Default: ``auto``\n\nPossible options:\n\n* ``auto`` - Use any available utility\n\n* ``growpart`` - Use growpart utility\n\n* ``gpart`` - Use BSD gpart utility\n\n* ``off`` - Take no action.",
               "oneOf": [
                 {
-                  "enum": [
-                    "auto",
-                    "growpart",
-                    "gpart",
-                    "off"
-                  ]
+                  "enum": ["auto", "growpart", "gpart", "off"]
                 },
                 {
-                  "enum": [
-                    false
-                  ],
+                  "enum": [false],
                   "changed": true,
                   "changed_version": "22.3",
                   "changed_description": "Specifying a boolean ``false`` value for ``mode`` is deprecated. Use ``off`` instead."
@@ -1341,9 +1265,7 @@
             },
             "devices": {
               "type": "array",
-              "default": [
-                "/"
-              ],
+              "default": ["/"],
               "items": {
                 "type": "string"
               },
@@ -1412,9 +1334,7 @@
           "properties": {
             "network": {
               "type": "object",
-              "required": [
-                "when"
-              ],
+              "required": ["when"],
               "additionalProperties": false,
               "properties": {
                 "when": {
@@ -1460,9 +1380,7 @@
               "description": "Optional. Keyboard options. Corresponds to XKBOPTIONS."
             }
           },
-          "required": [
-            "layout"
-          ]
+          "required": ["layout"]
         }
       }
     },
@@ -1479,15 +1397,11 @@
               "description": "Set false to avoid printing SSH keys to system console. Default: ``true``."
             }
           },
-          "required": [
-            "emit_keys_to_console"
-          ]
+          "required": ["emit_keys_to_console"]
         },
         "ssh_key_console_blacklist": {
           "type": "array",
-          "default": [
-            "ssh-dss"
-          ],
+          "default": ["ssh-dss"],
           "description": "Avoid printing matching SSH key types to the system console.",
           "items": {
             "type": "string"
@@ -1509,18 +1423,13 @@
       "properties": {
         "landscape": {
           "type": "object",
-          "required": [
-            "client"
-          ],
+          "required": ["client"],
           "additionalProperties": false,
           "properties": {
             "client": {
               "type": "object",
               "additionalProperties": true,
-              "required": [
-                "account_name",
-                "computer_title"
-              ],
+              "required": ["account_name", "computer_title"],
               "properties": {
                 "url": {
                   "type": "string",
@@ -1540,13 +1449,7 @@
                 "log_level": {
                   "type": "string",
                   "default": "info",
-                  "enum": [
-                    "debug",
-                    "info",
-                    "warning",
-                    "error",
-                    "critical"
-                  ],
+                  "enum": ["debug", "info", "warning", "error", "critical"],
                   "description": "The log level for the client. Default: ``info``."
                 },
                 "computer_title": {
@@ -1615,12 +1518,7 @@
                 },
                 "storage_backend": {
                   "type": "string",
-                  "enum": [
-                    "zfs",
-                    "dir",
-                    "lvm",
-                    "btrfs"
-                  ],
+                  "enum": ["zfs", "dir", "lvm", "btrfs"],
                   "default": "dir",
                   "description": "Storage backend to use. Default: ``dir``."
                 },
@@ -1644,20 +1542,14 @@
             },
             "bridge": {
               "type": "object",
-              "required": [
-                "mode"
-              ],
+              "required": ["mode"],
               "additionalProperties": false,
               "description": "LXD bridge configuration provided to setup the host lxd bridge. Can not be combined with ``lxd.preseed``.",
               "properties": {
                 "mode": {
                   "type": "string",
                   "description": "Whether to setup LXD bridge, use an existing bridge by ``name`` or create a new bridge. `none` will avoid bridge setup, `existing` will configure lxd to use the bring matching ``name`` and `new` will create a new bridge.",
-                  "enum": [
-                    "none",
-                    "existing",
-                    "new"
-                  ]
+                  "enum": ["none", "existing", "new"]
                 },
                 "name": {
                   "type": "string",
@@ -1825,9 +1717,7 @@
               "description": "The size in bytes of the swap file, 'auto' or a human-readable size abbreviation of the format <float_size><units> where units are one of B, K, M, G or T. **WARNING: Attempts to use IEC prefixes in your configuration prior to cloud-init version 23.1 will result in unexpected behavior. SI prefixes names (KB, MB) are required on pre-23.1 cloud-init, however IEC values are used. In summary, assume 1KB == 1024B, not 1000B**",
               "oneOf": [
                 {
-                  "enum": [
-                    "auto"
-                  ]
+                  "enum": ["auto"]
                 },
                 {
                   "type": "integer"
@@ -1858,10 +1748,7 @@
       "type": "object",
       "properties": {
         "ntp": {
-          "type": [
-            "null",
-            "object"
-          ],
+          "type": ["null", "object"],
           "additionalProperties": false,
           "properties": {
             "pools": {
@@ -1991,7 +1878,7 @@
         "package_reboot_if_required": {
           "type": "boolean",
           "default": false,
-          "description": "Set ``true`` to reboot the system if required by presence of `/var/run/reboot-required`. Default: ``false``"
+          "description": "Set ``true`` to reboot the system if required by presence of `/var/run/reboot-required` or `/var/run/reboot-needed`. Default: ``false``"
         },
         "apt_update": {
           "type": "boolean",
@@ -2024,9 +1911,7 @@
       "properties": {
         "phone_home": {
           "type": "object",
-          "required": [
-            "url"
-          ],
+          "required": ["url"],
           "additionalProperties": false,
           "properties": {
             "url": {
@@ -2038,9 +1923,7 @@
               "description": "A list of keys to post or ``all``. Default: ``all``",
               "oneOf": [
                 {
-                  "enum": [
-                    "all"
-                  ]
+                  "enum": ["all"]
                 },
                 {
                   "type": "array",
@@ -2073,9 +1956,7 @@
       "properties": {
         "power_state": {
           "type": "object",
-          "required": [
-            "mode"
-          ],
+          "required": ["mode"],
           "additionalProperties": false,
           "properties": {
             "delay": {
@@ -2094,20 +1975,14 @@
                   "changed_description": "Use of type string for this value is deprecated. Use ``now`` or integer type."
                 },
                 {
-                  "enum": [
-                    "now"
-                  ]
+                  "enum": ["now"]
                 }
               ]
             },
             "mode": {
               "description": "Must be one of ``poweroff``, ``halt``, or ``reboot``.",
               "type": "string",
-              "enum": [
-                "poweroff",
-                "reboot",
-                "halt"
-              ]
+              "enum": ["poweroff", "reboot", "halt"]
             },
             "message": {
               "description": "Optional message to display to the user when the system is powering off or rebooting.",
@@ -2156,10 +2031,7 @@
             "install_type": {
               "type": "string",
               "description": "Valid values are ``packages`` and ``aio``. Agent packages from the puppetlabs repositories can be installed by setting ``aio``. Based on this setting, the default config/SSL/CSR paths will be adjusted accordingly. Default: ``packages``",
-              "enum": [
-                "packages",
-                "aio"
-              ],
+              "enum": ["packages", "aio"],
               "default": "packages"
             },
             "collection": {
@@ -2251,11 +2123,7 @@
       "type": "object",
       "properties": {
         "resize_rootfs": {
-          "enum": [
-            true,
-            false,
-            "noblock"
-          ],
+          "enum": [true, false, "noblock"],
           "description": "Whether to resize the root partition. ``noblock`` will resize in the background. Default: ``true``"
         }
       }
@@ -2385,9 +2253,7 @@
                   },
                   {
                     "type": "object",
-                    "required": [
-                      "content"
-                    ],
+                    "required": ["content"],
                     "additionalProperties": false,
                     "properties": {
                       "filename": {
@@ -2409,9 +2275,7 @@
               "description": "The command to use to reload the rsyslog service after the config has been updated. If this is set to ``auto``, then an appropriate command for the distro will be used. This is the default behavior. To manually set the command, use a list of command args (e.g. ``[systemctl, restart, rsyslog]``).",
               "oneOf": [
                 {
-                  "enum": [
-                    "auto"
-                  ]
+                  "enum": ["auto"]
                 },
                 {
                   "type": "array",
@@ -2533,15 +2397,9 @@
               ]
             },
             "prefix": {
-              "type": [
-                "array",
-                "string"
-              ],
+              "type": ["array", "string"],
               "items": {
-                "type": [
-                  "string",
-                  "integer"
-                ]
+                "type": ["string", "integer"]
               },
               "description": "The command to run before any vendor scripts. Its primary use case is for profiling a script, not to prevent its run"
             }
@@ -2568,13 +2426,7 @@
             "encoding": {
               "type": "string",
               "default": "raw",
-              "enum": [
-                "raw",
-                "base64",
-                "b64",
-                "gzip",
-                "gz"
-              ],
+              "enum": ["raw", "base64", "b64", "gzip", "gz"],
               "description": "Used to decode ``data`` provided. Allowed values are ``raw``, ``base64``, ``b64``, ``gzip``, or ``gz``.  Default: ``raw``"
             },
             "command": {
@@ -2654,38 +2506,27 @@
                 "type": "object",
                 "anyOf": [
                   {
-                    "required": [
-                      "name",
-                      "type"
-                    ],
+                    "required": ["name", "type"],
                     "additionalProperties": false,
                     "properties": {
                       "name": {
                         "type": "string"
                       },
                       "type": {
-                        "enum": [
-                          "RANDOM"
-                        ],
+                        "enum": ["RANDOM"],
                         "type": "string"
                       }
                     }
                   },
                   {
-                    "required": [
-                      "name",
-                      "password"
-                    ],
+                    "required": ["name", "password"],
                     "additionalProperties": false,
                     "properties": {
                       "name": {
                         "type": "string"
                       },
                       "type": {
-                        "enum": [
-                          "hash",
-                          "text"
-                        ],
+                        "enum": ["hash", "text"],
                         "default": "hash",
                         "type": "string"
                       },
@@ -2734,10 +2575,7 @@
           "properties": {
             "assertions": {
               "description": "Properly-signed snap assertions which will run before and snap ``commands``.",
-              "type": [
-                "object",
-                "array"
-              ],
+              "type": ["object", "array"],
               "items": {
                 "type": "string"
               },
@@ -2750,10 +2588,7 @@
               }
             },
             "commands": {
-              "type": [
-                "object",
-                "array"
-              ],
+              "type": ["object", "array"],
               "description": "Snap commands to run on the target system",
               "items": {
                 "oneOf": [
@@ -2869,21 +2704,11 @@
         "ssh_genkeytypes": {
           "type": "array",
           "description": "The SSH key types to generate. Default: ``[rsa, dsa, ecdsa, ed25519]``",
-          "default": [
-            "dsa",
-            "ecdsa",
-            "ed25519",
-            "rsa"
-          ],
+          "default": ["dsa", "ecdsa", "ed25519", "rsa"],
           "minItems": 1,
           "items": {
             "type": "string",
-            "enum": [
-              "dsa",
-              "ecdsa",
-              "ed25519",
-              "rsa"
-            ]
+            "enum": ["dsa", "ecdsa", "ed25519", "rsa"]
           }
         },
         "disable_root": {
@@ -2978,50 +2803,32 @@
               "additionalProperties": true,
               "properties": {
                 "http_proxy": {
-                  "type": [
-                    "string",
-                    "null"
-                  ],
+                  "type": ["string", "null"],
                   "format": "uri",
                   "description": "Ubuntu Advantage HTTP Proxy URL or null to unset."
                 },
                 "https_proxy": {
-                  "type": [
-                    "string",
-                    "null"
-                  ],
+                  "type": ["string", "null"],
                   "format": "uri",
                   "description": "Ubuntu Advantage HTTPS Proxy URL or null to unset."
                 },
                 "global_apt_http_proxy": {
-                  "type": [
-                    "string",
-                    "null"
-                  ],
+                  "type": ["string", "null"],
                   "format": "uri",
                   "description": "HTTP Proxy URL used for all APT repositories on a system or null to unset. Stored at ``/etc/apt/apt.conf.d/90ubuntu-advantage-aptproxy``"
                 },
                 "global_apt_https_proxy": {
-                  "type": [
-                    "string",
-                    "null"
-                  ],
+                  "type": ["string", "null"],
                   "format": "uri",
                   "description": "HTTPS Proxy URL used for all APT repositories on a system or null to unset. Stored at ``/etc/apt/apt.conf.d/90ubuntu-advantage-aptproxy``"
                 },
                 "ua_apt_http_proxy": {
-                  "type": [
-                    "string",
-                    "null"
-                  ],
+                  "type": ["string", "null"],
                   "format": "uri",
                   "description": "HTTP Proxy URL used only for Ubuntu Advantage APT repositories or null to unset. Stored at ``/etc/apt/apt.conf.d/90ubuntu-advantage-aptproxy``"
                 },
                 "ua_apt_https_proxy": {
-                  "type": [
-                    "string",
-                    "null"
-                  ],
+                  "type": ["string", "null"],
                   "format": "uri",
                   "description": "HTTPS Proxy URL used only for Ubuntu Advantage APT repositories or null to unset. Stored at ``/etc/apt/apt.conf.d/90ubuntu-advantage-aptproxy``"
                 }
@@ -3040,9 +2847,7 @@
           "properties": {
             "nvidia": {
               "type": "object",
-              "required": [
-                "license-accepted"
-              ],
+              "required": ["license-accepted"],
               "additionalProperties": false,
               "properties": {
                 "license-accepted": {
@@ -3067,16 +2872,10 @@
           "description": "Whether to manage ``/etc/hosts`` on the system. If ``true``, render the hosts file using ``/etc/cloud/templates/hosts.tmpl`` replacing ``$hostname`` and ``$fdqn``. If ``localhost``, append a ``127.0.1.1`` entry that resolves from FQDN and hostname every boot. Default: ``false``.",
           "oneOf": [
             {
-              "enum": [
-                true,
-                false,
-                "localhost"
-              ]
+              "enum": [true, false, "localhost"]
             },
             {
-              "enum": [
-                "template"
-              ],
+              "enum": ["template"],
               "changed_description": "Use of ``template`` is deprecated, use ``true`` instead.",
               "changed": true,
               "changed_version": "22.3"
@@ -3117,20 +2916,11 @@
       "type": "object",
       "properties": {
         "groups": {
-          "type": [
-            "string",
-            "object",
-            "array"
-          ],
-          "hidden": [
-            "patternProperties"
-          ],
+          "type": ["string", "object", "array"],
+          "hidden": ["patternProperties"],
           "$ref": "#/$defs/users_groups.groups_by_groupname",
           "items": {
-            "type": [
-              "string",
-              "object"
-            ],
+            "type": ["string", "object"],
             "$ref": "#/$defs/users_groups.groups_by_groupname"
           },
           "minItems": 1
@@ -3148,11 +2938,7 @@
           "description": "The ``user`` dictionary values override the ``default_user`` configuration from ``/etc/cloud/cloud.cfg``. The `user` dictionary keys supported for the default_user are the same as the ``users`` schema."
         },
         "users": {
-          "type": [
-            "string",
-            "array",
-            "object"
-          ],
+          "type": ["string", "array", "object"],
           "items": {
             "oneOf": [
               {
@@ -3177,10 +2963,7 @@
       "type": "object",
       "properties": {
         "wireguard": {
-          "type": [
-            "null",
-            "object"
-          ],
+          "type": ["null", "object"],
           "properties": {
             "interfaces": {
               "type": "array",
@@ -3213,9 +2996,7 @@
               "description": "List of shell commands to be executed as probes."
             }
           },
-          "required": [
-            "interfaces"
-          ],
+          "required": ["interfaces"],
           "minProperties": 1,
           "additionalProperties": false
         }
@@ -3228,9 +3009,7 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": [
-              "path"
-            ],
+            "required": ["path"],
             "additionalProperties": false,
             "properties": {
               "path": {
@@ -3335,9 +3114,7 @@
                   "description": "Any supported yum repository configuration options will be written to the yum repo config file. See: man yum.conf"
                 }
               },
-              "required": [
-                "baseurl"
-              ]
+              "required": ["baseurl"]
             }
           }
         }
@@ -3367,10 +3144,7 @@
                     "description": "The base repositoy URL"
                   }
                 },
-                "required": [
-                  "id",
-                  "baseurl"
-                ]
+                "required": ["id", "baseurl"]
               },
               "minItems": 1
             },
@@ -3395,55 +3169,36 @@
               "oneOf": [
                 {
                   "additionalProperties": false,
-                  "required": [
-                    "type"
-                  ],
+                  "required": ["type"],
                   "properties": {
                     "type": {
                       "type": "string",
-                      "enum": [
-                        "log"
-                      ]
+                      "enum": ["log"]
                     },
                     "level": {
                       "type": "string",
-                      "enum": [
-                        "DEBUG",
-                        "INFO",
-                        "WARN",
-                        "ERROR",
-                        "FATAL"
-                      ],
+                      "enum": ["DEBUG", "INFO", "WARN", "ERROR", "FATAL"],
                       "default": "DEBUG"
                     }
                   }
                 },
                 {
                   "additionalProperties": false,
-                  "required": [
-                    "type"
-                  ],
+                  "required": ["type"],
                   "properties": {
                     "type": {
                       "type": "string",
-                      "enum": [
-                        "print"
-                      ]
+                      "enum": ["print"]
                     }
                   }
                 },
                 {
                   "additionalProperties": false,
-                  "required": [
-                    "type",
-                    "endpoint"
-                  ],
+                  "required": ["type", "endpoint"],
                   "properties": {
                     "type": {
                       "type": "string",
-                      "enum": [
-                        "webhook"
-                      ]
+                      "enum": ["webhook"]
                     },
                     "endpoint": {
                       "type": "string",
@@ -3480,15 +3235,11 @@
                 },
                 {
                   "additionalProperties": false,
-                  "required": [
-                    "type"
-                  ],
+                  "required": ["type"],
                   "properties": {
                     "type": {
                       "type": "string",
-                      "enum": [
-                        "hyperv"
-                      ]
+                      "enum": ["hyperv"]
                     },
                     "kvp_file_path": {
                       "type": "string",
